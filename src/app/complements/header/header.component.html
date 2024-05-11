@@ -1,0 +1,31 @@
+<div class="contact-info">
+    <div class="phone">
+        <mat-icon>
+            call
+        </mat-icon>
+        <p>(+502) 2426-4034</p>
+    </div>
+</div>
+<div class="navigation-bar">
+    <img src="../../../assets/img/logo.jpg" class="logo">
+    <div class="menu">
+        <button mat-button [matMenuTriggerFor]="afterMenu">Home</button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="afterMenu">Doctors</button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="afterMenu">Services</button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </mat-menu>
+    </div>
+    <div class="login">
+        <button class="btn-login"><i class="fa fa-user"></i></button>
+    </div>
+</div>

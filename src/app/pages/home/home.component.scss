@@ -1,0 +1,84 @@
+*{
+    font-size: 1.4rem;
+}
+
+.banner{
+    width: 100%;
+    .img-banner{
+        width: 100%;
+    }
+}
+
+.about{
+    line-height: 2rem;
+    display: flex;
+    align-items: center;
+    width:95%;
+    margin:auto; 
+
+    .info-text{
+        margin: 2rem 0 0 10%;
+        width: 50%;
+
+        ul{
+            list-style-type: none;
+            li{
+                list-style-image: url('../../../assets/img/other/chek.png');
+                background-size: 5px 5px;
+            }
+        }
+
+        h2{
+            margin-top: 1rem;
+            color:#9fd834;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+
+        button{
+            text-align: center;
+            align-items: center;
+            display: flex;
+            margin: auto;
+            border-radius: 3rem;
+            padding: 1rem;
+            border: none;
+            background-color:#2097a3;
+            color: white;
+        }
+    }
+
+    .img-about{
+        width: 30%;
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    *{
+        font-size: 1rem;
+    }
+
+    .banner .img-banner {
+        content: url('../../../assets/img/head/banner_mobile.jpg');
+    }
+
+    .about{
+        display: block;
+
+        .info-text{
+            margin: auto;
+            width: 95%;
+        }
+
+        .img-about{
+            height: 15rem;
+            width: auto;
+            display: flex;
+            align-items: center;
+            margin: auto;
+        }
+    }
+}
+
