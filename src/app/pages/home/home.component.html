@@ -18,3 +18,14 @@
     </div>
     <img src="../../../assets/img/src/puppies.jpeg" class="img-about">
 </div>
+
+<div class="ubicacion">
+    <h2>ubicación</h2>
+    <google-map width="100%" class="map" [center]="position">
+        <map-marker
+        [position]="position"
+        [label]="label"
+        [title]="title">
+        </map-marker>
+    </google-map>
+</div>

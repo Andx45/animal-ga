@@ -1,5 +1,13 @@
 *{
     font-size: 1.4rem;
+    h2{
+        margin-top: 1rem;
+        color:#9fd834;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.6rem;
+    }
+
 }
 
 .banner{
@@ -28,14 +36,6 @@
             }
         }
 
-        h2{
-            margin-top: 1rem;
-            color:#9fd834;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.6rem;
-        }
-
         button{
             text-align: center;
             align-items: center;
@@ -55,6 +55,19 @@
     }
 }
 
+.ubicacion{
+    width: 80%;
+    margin: auto;
+    display: block;
+
+    h2{
+        margin-top: 2rem;
+    }
+
+    .map{
+    }
+}
+
 @media only screen and (max-width: 768px) {
     *{
         font-size: 1rem;
@@ -62,6 +75,12 @@
 
     .banner .img-banner {
         content: url('../../../assets/img/head/banner_mobile.jpg');
+    }
+
+    .ubicacion{
+        .map{
+            height: 20%;
+        }
     }
 
     .about{
