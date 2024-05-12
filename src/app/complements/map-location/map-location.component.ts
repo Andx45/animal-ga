@@ -12,10 +12,10 @@ export class MapLocationComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const map_animal = new Map('map-animal').setView([51.505, -0.09], 13);
-    tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.png', {
+    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       minZoom: 0,
       maxZoom: 17,
-      attribution: '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map_animal);
 
     const markerItem = marker([14.58320401886148, -90.6061193999468]).addTo(map_animal).bindPopup("Animal Garden");
