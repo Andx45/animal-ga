@@ -1,0 +1,56 @@
+.main-container{
+    width: 60%;
+    display: flex;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 2rem;
+
+    .info-login{
+        display: block;
+        text-align: center;
+        margin-left: 5%;
+
+        h1{
+            color: #9fd834;
+            font-weight: bold;
+        }
+
+        label{
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        input{
+            margin-bottom: 1rem;
+            margin-right: -3rem;
+            padding: 0 1rem 0 1rem;
+            height: 2rem;
+            width: 100%;
+            border-color: rgba(216, 216, 216, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        button{
+            width: 30%;
+            background-color: #2097a3;
+            border-radius: 2rem;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 0 0.5rem 0;
+            margin: 1rem auto 1rem auto;
+        }
+    }
+
+    .img-login{
+        width: 50%;
+        overflow: hidden;
+        margin-left: 10%;
+        img{
+            height: 30rem;
+            position: -10rem;
+        }
+    }
+}

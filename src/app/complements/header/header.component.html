@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="navigation-bar">
-    <img src="../../../assets/img/logo.jpg" class="logo">
+    <img src="../../../assets/img/logo.jpg" class="logo" onclick="window.location='/home'">
     <div class="menu">
         <button mat-button [matMenuTriggerFor]="afterMenu">Home</button>
         <mat-menu #afterMenu="matMenu" xPosition="after">
@@ -26,6 +26,6 @@
         </mat-menu>
     </div>
     <div class="login">
-        <button class="btn-login"><i class="fa fa-user"></i></button>
+        <button class="btn-login"><i class="fa fa-user" onclick="window.location='/login'"></i></button>
     </div>
 </div>
