@@ -1,0 +1,7 @@
+<ngb-carousel class="img-banner" [interval]="4000">
+    <ng-template ngbSlide *ngFor="let image of images" class="tem-slide">
+        <div class="carousel-wrapper">
+            <img [src]="image.name">
+        </div>
+    </ng-template>
+</ngb-carousel>
