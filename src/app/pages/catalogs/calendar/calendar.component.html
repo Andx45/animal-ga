@@ -1,0 +1,72 @@
+<div class="appointment-catalog">  
+    <mat-form-field>
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar citas">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Mes</mat-label>
+      <mat-select [(ngModel)]="selectedMonth" (selectionChange)="filterByMonthAndYear()">
+        <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Año</mat-label>
+      <mat-select [(ngModel)]="selectedYear" (selectionChange)="filterByMonthAndYear()">
+        <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <!-- Owner Name Column -->
+      <ng-container matColumnDef="ownerName">
+        <th mat-header-cell *matHeaderCellDef> Nombre del Dueño </th>
+        <td mat-cell *matCellDef="let appointment"> {{appointment.ownerName}} </td>
+      </ng-container>
+  
+      <!-- Pet Name Column -->
+      <ng-container matColumnDef="petName">
+        <th mat-header-cell *matHeaderCellDef> Nombre de la Mascota </th>
+        <td mat-cell *matCellDef="let appointment"> {{appointment.petName}} </td>
+      </ng-container>
+  
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let appointment"> {{appointment.date}} </td>
+      </ng-container>
+  
+      <!-- Time Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Hora </th>
+        <td mat-cell *matCellDef="let appointment"> {{appointment.time}} </td>
+      </ng-container>
+  
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let appointment"> {{appointment.type}} </td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let appointment">
+          <button mat-icon-button color="primary" (click)="editAppointment(appointment)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteAppointment(appointment)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <!-- Header and Row Declarations -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    </table>
+  </div>
+  

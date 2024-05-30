@@ -1,0 +1,30 @@
+.general-account {
+    width: 95%;
+    margin: 1rem auto;
+    background-color: white;
+    text-align: left;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.form-group {
+    display: contents;
+}
+
+.form-group label {
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}

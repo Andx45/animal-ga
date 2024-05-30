@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Agendar Cita</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="form-container">
+        <div class="form-group">
+            <label for="name">Nombre de la mascota:</label>
+            <select id="name">
+                <option>Ringo</option>
+                <option>Princesa</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="proc">Tipo de cita</label>
+            <select id="proc">
+                <option>Consulta Veterinaria</option>
+                <option>Vacunación</option>
+                <option>Grooming</option>
+                <option>Castracion</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="birth">Fecha de cita:</label>
+            <input type="datetime-local" id="birth" name="birth">
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
+</mat-dialog-actions>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { RegPetsComponent } from '../reg-pets/reg-pets.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { RegPetsComponent } from '../reg-pets/reg-pets.component';
 
 @Component({
   selector: 'app-pets',

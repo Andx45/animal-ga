@@ -1,25 +1,32 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" 
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+  <mat-sidenav #drawer class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar class="menu-title">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="/dashboard">Mascotas</a>
-      <a mat-list-item href="/dashboard">Citas</a>
-      <a mat-list-item href="/dashboard">Cuenta</a>
+      <a mat-list-item href="/dashboard/pets">Mascotas</a>
+      <a mat-list-item href="/dashboard/appointment">Citas</a>
+      <a mat-list-item (click)="openPass()">Cuenta</a>
+
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Catálogos
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a mat-list-item href="/dashboard/catalog/products">Productos</a>
+          <a mat-list-item href="/dashboard/catalog/calendar">Calendario</a>
+        </mat-expansion-panel>
+      </mat-accordion>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       @if (isHandset$ | async) {
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
       }
       <span>Gestiones</span>
     </mat-toolbar>

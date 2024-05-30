@@ -1,0 +1,29 @@
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.form-group {
+    display: contents;
+}
+
+.form-group label {
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}

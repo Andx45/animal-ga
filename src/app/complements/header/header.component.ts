@@ -17,4 +17,9 @@ export class HeaderComponent {
   home(){
     this.router.navigateByUrl('/home');
   }
+
+  services(){
+    this.router.navigateByUrl('/services')
+  }
+
 }
