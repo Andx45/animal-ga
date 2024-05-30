@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { RegProductComponent } from '../reg-product/reg-product.component';
 
 export interface Product {
   id: number;
@@ -28,7 +30,8 @@ const PRODUCT_DATA: Product[] = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
@@ -36,6 +39,7 @@ const PRODUCT_DATA: Product[] = [
 export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'url', 'actions'];
   dataSource = new MatTableDataSource(PRODUCT_DATA);
+  constructor(public dialog: MatDialog) {}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -51,6 +55,13 @@ export class ProductsComponent implements OnInit {
 
   deleteProduct(product: Product) {
     console.log('Delete product:', product);
-    // Lógica para eliminar el producto
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(RegProductComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

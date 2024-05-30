@@ -1,17 +1,59 @@
-.general-services{
-    width: 95%;
+.general-services {
+    width: 80%;
     margin: auto;
-
     font-size: 1.4rem;
-    h2{
+  
+    h2 {
+      margin-top: 1rem;
+      color: #9fd834;
+      text-align: center;
+      font-weight: bold;
+      font-size: 2rem; 
+    }
+  
+    p {
+      text-align: center;
+      font-size: 1.2rem; 
+    }
+  
+    .img-service {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      margin: 1rem auto;
+    }
+  
+    .services-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; 
+      gap: 1rem;
+      margin: 2rem 0; 
+    }
+  
+    .example-card {
+      width: 100%;
+      max-width: 350px; 
+      font-size: 1rem;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+      transition: transform 0.3s, box-shadow 0.3s; 
+      margin: 0.5rem;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+      }
+  
+      mat-card-title {
+        text-align: center;
+        color: #2096A2;
+        font-weight: bold; /* Añadir negrita a los títulos */
+      }
+  
+      mat-card-content {
         margin-top: 1rem;
-        color:#9fd834;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.6rem;
+      }
     }
-
-    p{
-        text-align: center;
-    }
-}
+  }
+  
