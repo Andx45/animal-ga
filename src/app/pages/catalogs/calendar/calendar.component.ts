@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export interface Appointment {
   id: number;
@@ -15,14 +16,7 @@ export interface Appointment {
   petName: string;
   date: string;
   time: string;
-  type: string;
 }
-
-const APPOINTMENT_DATA: Appointment[] = [
-  { id: 1, ownerName: 'John Doe', petName: 'Fido', date: '2024-05-01', time: '10:00', type: 'Consulta' },
-  { id: 2, ownerName: 'Jane Smith', petName: 'Whiskers', date: '2024-05-03', time: '14:00', type: 'Vacunación' },
-  { id: 3, ownerName: 'Carlos Johnson', petName: 'Buddy', date: '2024-06-10', time: '09:00', type: 'Cirugía' }
-];
 
 @Component({
   selector: 'app-calendar',
@@ -35,14 +29,16 @@ const APPOINTMENT_DATA: Appointment[] = [
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
+
 export class CalendarComponent implements OnInit {
-  displayedColumns: string[] = ['ownerName', 'petName', 'date', 'time', 'type', 'actions'];
-  dataSource = new MatTableDataSource(APPOINTMENT_DATA);
+  displayedColumns: string[] = ['id', 'ownerName', 'petName', 'date', 'time', 'actions'];
+  dataSource = new MatTableDataSource<Appointment>();
 
   selectedMonth: string = '';
   selectedYear: string = '';
@@ -50,24 +46,39 @@ export class CalendarComponent implements OnInit {
   months: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   years: string[] = ['2023', '2024', '2025', '2026', '2027'];
 
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.fetchAppointments();
+  }
+
+  fetchAppointments() {
+    this.http.get<any>('https://localhost:44374/api/rest/listarReservaciones')
+      .subscribe(data => {
+        const appointmentList = data.map((appointment: any) => ({
+          id: appointment.id_reserva,
+          ownerName: appointment.nombre_usuario,
+          petName: appointment.nombre_mascota,
+          date: appointment.Fecha,
+          time: appointment.Hora
+        }));
+        this.dataSource.data = appointmentList;
+      });
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   filterByMonthAndYear() {
-    this.dataSource.filter = this.selectedMonth.toLowerCase() + this.selectedYear;
   }
-
-  ngOnInit() {}
 
   editAppointment(appointment: Appointment) {
     console.log('Edit appointment:', appointment);
-    // Lógica para editar la cita
   }
 
   deleteAppointment(appointment: Appointment) {
     console.log('Delete appointment:', appointment);
-    // Lógica para eliminar la cita
   }
 }

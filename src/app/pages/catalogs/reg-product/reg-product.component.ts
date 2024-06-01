@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule, MatIcon } from '@angular/material/icon';
 
 interface Producto {
   nombre_p: string;
@@ -15,7 +16,7 @@ interface Producto {
 @Component({
   selector: 'app-reg-product',
   standalone: true,
-  imports: [MatButtonModule, MatDialogModule, HttpClientModule, CommonModule, FormsModule],
+  imports: [MatButtonModule, MatDialogModule, HttpClientModule, CommonModule, FormsModule, MatIconModule],
   templateUrl: './reg-product.component.html',
   styleUrls: ['./reg-product.component.scss']
 })
@@ -29,8 +30,7 @@ export class RegProductComponent {
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-      // Assuming you want to save the file path as a string
-      this.productData.imagen = file.name;
+      this.productData.imagen = URL.createObjectURL(file);
     }
   }
 

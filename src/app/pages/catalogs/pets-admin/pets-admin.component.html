@@ -1,0 +1,73 @@
+<div class="pet-catalog">
+    <mat-form-field>
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar mascotas">
+    </mat-form-field>
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id_mascota">
+        <th mat-header-cell *matHeaderCellDef> ID Mascota </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.id_mascota}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre_m">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.nombre_m}} </td>
+      </ng-container>
+  
+      <!-- Breed Column -->
+      <ng-container matColumnDef="raza">
+        <th mat-header-cell *matHeaderCellDef> Raza </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.raza}} </td>
+      </ng-container>
+  
+      <!-- Birth Date Column -->
+      <ng-container matColumnDef="fecha_nacimiento">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Nacimiento </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.fecha_nacimiento | date}} </td>
+      </ng-container>
+  
+      <!-- Sex Column -->
+      <ng-container matColumnDef="sexo">
+        <th mat-header-cell *matHeaderCellDef> Sexo </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.sexo}} </td>
+      </ng-container>
+  
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef> Color </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.color}} </td>
+      </ng-container>
+  
+      <!-- Species Column -->
+      <ng-container matColumnDef="especie">
+        <th mat-header-cell *matHeaderCellDef> Especie </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.especie}} </td>
+      </ng-container>
+  
+      <!-- Owner DPI Column -->
+      <ng-container matColumnDef="dpi">
+        <th mat-header-cell *matHeaderCellDef> DPI del Dueño </th>
+        <td mat-cell *matCellDef="let pet"> {{pet.dpi}} </td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let pet">
+          <button mat-icon-button color="primary" (click)="editPet(pet)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deletePet(pet)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

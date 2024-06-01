@@ -5,6 +5,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { RegPetsComponent } from '../reg-pets/reg-pets.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 interface Mascota {
@@ -28,8 +29,7 @@ interface Mascota {
 
 export class PetsComponent implements OnInit {
   mascotas: Mascota[] = [];
-
-  constructor(private http: HttpClient, public dialog: MatDialog) {}
+  constructor(private http: HttpClient, public dialog: MatDialog, private router: Router) {}
 
   calcularEdad(fecha_nacimiento: string): number {
     const diff = Date.now() - new Date(fecha_nacimiento).getTime();
@@ -37,9 +37,16 @@ export class PetsComponent implements OnInit {
     return age;
   }
   
+  redirect(){
+    this.router.navigateByUrl('/dashboard/catalog/products');
+  }
 
   ngOnInit() {
-    this.getMascotas(1010); 
+    if (localStorage.getItem('rol') =='0'){
+      this.redirect();
+    }else{
+      this.getMascotas(Number(localStorage.getItem('dpi')));
+    } 
   }
 
   getMascotas(dpi: number) {
@@ -54,7 +61,7 @@ export class PetsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.getMascotas(1010);
+      this.getMascotas(Number(localStorage.getItem('dpi')));
     });
   }
 }

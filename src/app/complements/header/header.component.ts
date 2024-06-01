@@ -22,6 +22,10 @@ export class HeaderComponent {
     this.router.navigateByUrl('/services')
   }
 
+  products(){
+    this.router.navigateByUrl('/products')
+  }
+
   login(){
     if (localStorage.length > 0){
       this.router.navigateByUrl('/dashboard')

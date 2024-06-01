@@ -11,17 +11,10 @@
       </div>
 
       <div class="admin-opt" *ngIf="isAdmin">
-        <mat-accordion>
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Catálogos
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <a mat-list-item href="/dashboard/catalog/products">Productos</a>
-            <a mat-list-item href="/dashboard/catalog/calendar">Calendario</a>
-          </mat-expansion-panel>
-        </mat-accordion>
+        <a mat-list-item href="/dashboard/catalog/products">Productos</a>
+        <a mat-list-item href="/dashboard/catalog/calendar">Citas</a>
+        <a mat-list-item href="/dashboard/catalog/users">Usuarios</a>
+        <a mat-list-item href="/dashboard/catalog/pet-admin">Mascotas</a>
       </div>
 
       <button mat-flat-button color="warn" class="logout" (click)="logout()">Cerrar Sesión</button>

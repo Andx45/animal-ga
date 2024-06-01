@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { RegProductComponent } from '../reg-product/reg-product.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export interface Product {
   id: number;
@@ -16,12 +17,6 @@ export interface Product {
   price: number;
   url: string;
 }
-
-const PRODUCT_DATA: Product[] = [
-  { id: 1, name: 'Producto 1', description: "Producto abc", price: 12.50, url: 'http://example.com/producto1' },
-  { id: 2, name: 'Producto 2', description: "Producto abc", price: 12.50, url: 'http://example.com/producto2' },
-  { id: 3, name: 'Producto 3', description: "Producto abc", price: 12.50, url: 'http://example.com/producto3' }
-];
 
 @Component({
   selector: 'app-products',
@@ -33,26 +28,44 @@ const PRODUCT_DATA: Product[] = [
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
+
 export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'description', 'price', 'url', 'actions'];
-  dataSource = new MatTableDataSource(PRODUCT_DATA);
-  constructor(public dialog: MatDialog) {}
+  dataSource = new MatTableDataSource<Product>();
+
+  constructor(private http: HttpClient, public dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
+    this.http.get<any>('https://localhost:44374/api/rest/listarProducto')
+      .subscribe(data => {
+        const productList = data['Lista Productos'].map((product: any) => ({
+          id: product.id_producto,
+          name: product.nombre_p,
+          description: product.descripcion,
+          price: product.precio,
+          url: product.imagen
+        }));
+        this.dataSource.data = productList;
+      });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngOnInit() {}
-
   editProduct(product: Product) {
     console.log('Edit product:', product);
-    // Lógica para editar el producto
   }
 
   deleteProduct(product: Product) {

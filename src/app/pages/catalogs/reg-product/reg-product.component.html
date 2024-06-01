@@ -14,8 +14,9 @@
       <input type="number" id="price" name="price" [(ngModel)]="productData.precio" required>
     </div>
     <div class="form-group">
-      <label for="imagen">Imagen:</label>
-      <input type="file" id="imagen" name="imagen" (change)="onFileSelected($event)" required>
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen" (change)="onFileSelected($event)">
+        <input type="text" id="externalImage" name="externalImage" [(ngModel)]="productData.imagen" placeholder="Enlace externo">
     </div>
     <div>
       <button mat-button type="submit">Registrar</button>
