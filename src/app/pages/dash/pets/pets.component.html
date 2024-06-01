@@ -1,41 +1,25 @@
 <div class="general-container">
     <button mat-flat-button color="primary" class="item-inn" (click)="openDialog()">Agregar Nueva Mascota</button>
-
-    <mat-card class="item-inn">
+  
+    <ng-container *ngFor="let mascota of mascotas">
+      <mat-card class="item-inn">
         <mat-card-header>
-            <mat-card-title>Ringo</mat-card-title>
-            <mat-card-subtitle>Perro</mat-card-subtitle>
+          <mat-card-title>{{ mascota.nombre_m }}</mat-card-title>
+          <mat-card-subtitle>Id: {{ mascota.id_mascota }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="card-cont">
-            <div class="details">
-                <p>Sexo: Macho</p>
-                <p>Edad: 3 años</p>
-            </div>
-            <img mat-card-sm-image src="../../../../assets/img/src/pets/perro.png" class="img-icon">
+          <div class="details">
+            <p>Especie: {{ mascota.especie }}</p>
+            <p>Sexo: {{ mascota.sexo === 'm' ? 'Macho' : 'Hembra' }}</p>
+            <p>Edad: {{ calcularEdad(mascota.fecha_nacimiento) }} años</p>
+          </div>
+          <img mat-card-sm-image [src]="'../../../../assets/img/src/pets/' + mascota.especie.toLowerCase() + '.png'" class="img-icon">
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button color="primary">Editar</button>
-            <button mat-button color="warn">Eliminar</button>
+          <button mat-button color="primary">Editar</button>
+          <button mat-button color="warn">Eliminar</button>
         </mat-card-actions>
-    </mat-card>
-
-    <mat-card class="item-inn">
-        <mat-card-header>
-            <mat-card-title>Princesa</mat-card-title>
-            <mat-card-subtitle>Gato</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="card-cont">
-            <div class="details">
-                <p>Sexo: Hembra</p>
-                <p>Edad: 8 años</p>
-            </div>
-            <img mat-card-sm-image src="../../../../assets/img/src/pets/gato.png" class="img-icon">
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button color="primary">Editar</button>
-            <button mat-button color="warn">Eliminar</button>
-        </mat-card-actions>
-    </mat-card>
-
-
-</div>
+      </mat-card>
+    </ng-container>
+  </div>
+  

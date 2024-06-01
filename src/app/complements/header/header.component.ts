@@ -22,4 +22,12 @@ export class HeaderComponent {
     this.router.navigateByUrl('/services')
   }
 
+  login(){
+    if (localStorage.length > 0){
+      this.router.navigateByUrl('/dashboard')
+    }else{
+      this.router.navigateByUrl('/login')
+    }
+  }
+
 }

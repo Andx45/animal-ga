@@ -1,17 +1,27 @@
 <h2 mat-dialog-title>Registrar Producto</h2>
 <mat-dialog-content class="mat-typography">
-    <form class="form-container">
-        <div class="form-group">
-            <label for="name">Nombre del producto:</label>
-            <input type="text" id="name" name="name">
-        </div>
-        <div>
-            <label for="name">Imagen:</label>
-            <button>Examinar...</button>
-        </div>
-    </form>
+  <form class="form-container" (ngSubmit)="registerProduct()">
+    <div class="form-group">
+      <label for="name">Nombre del producto:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="productData.nombre_p" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Descripción del producto:</label>
+      <input type="text" id="description" name="description" [(ngModel)]="productData.descripcion" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Precio:</label>
+      <input type="number" id="price" name="price" [(ngModel)]="productData.precio" required>
+    </div>
+    <div class="form-group">
+      <label for="imagen">Imagen:</label>
+      <input type="file" id="imagen" name="imagen" (change)="onFileSelected($event)" required>
+    </div>
+    <div>
+      <button mat-button type="submit">Registrar</button>
+    </div>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
 </mat-dialog-actions>

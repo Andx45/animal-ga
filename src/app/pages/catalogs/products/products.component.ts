@@ -12,13 +12,15 @@ import { RegProductComponent } from '../reg-product/reg-product.component';
 export interface Product {
   id: number;
   name: string;
+  description: string;
+  price: number;
   url: string;
 }
 
 const PRODUCT_DATA: Product[] = [
-  { id: 1, name: 'Producto 1', url: 'http://example.com/producto1' },
-  { id: 2, name: 'Producto 2', url: 'http://example.com/producto2' },
-  { id: 3, name: 'Producto 3', url: 'http://example.com/producto3' }
+  { id: 1, name: 'Producto 1', description: "Producto abc", price: 12.50, url: 'http://example.com/producto1' },
+  { id: 2, name: 'Producto 2', description: "Producto abc", price: 12.50, url: 'http://example.com/producto2' },
+  { id: 3, name: 'Producto 3', description: "Producto abc", price: 12.50, url: 'http://example.com/producto3' }
 ];
 
 @Component({
@@ -37,7 +39,7 @@ const PRODUCT_DATA: Product[] = [
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'url', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'price', 'url', 'actions'];
   dataSource = new MatTableDataSource(PRODUCT_DATA);
   constructor(public dialog: MatDialog) {}
 

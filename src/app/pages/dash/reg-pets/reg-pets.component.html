@@ -3,18 +3,18 @@
     <form class="form-container">
         <div class="form-group">
             <label for="name">Nombre:</label>
-            <input id="name" type="text" placeholder="Nombre de la mascota">
+            <input id="name" type="text" placeholder="Nombre de la mascota"  name="name" [(ngModel)]="petData.Nombre">
         </div>
         <div class="form-group">
             <label for="sex">Sexo:</label>
-            <select id="sex">
-                <option>Macho</option>
-                <option>Hembra</option>
+            <select id="sex" name="sexo" [(ngModel)]="petData.Sexo">
+                <option value="m">Macho</option>
+                <option value="h">Hembra</option>
             </select>
         </div>
         <div class="form-group">
             <label for="specie">Especie:</label>
-            <select id="specie">
+            <select id="specie" name="specie" [(ngModel)]="petData.Especie">
                 <option>Perro</option>
                 <option>Gato</option>
                 <option>Ave</option>
@@ -22,19 +22,19 @@
         </div>
         <div class="form-group">
             <label for="birth">Fecha de Nacimiento:</label>
-            <input type="datetime-local" id="birth" name="birth">
+            <input type="date" id="birth" name="birth" [(ngModel)]="petData.FechaNacimiento">
         </div>
         <div class="form-group">
             <label for="race">Raza:</label>
-            <input id="race" type="text" placeholder="Raza de la mascota">
+            <input id="race" type="text" name="race" placeholder="Raza de la mascota" [(ngModel)]="petData.Raza">
         </div>
         <div class="form-group">
             <label for="color">Color:</label>
-            <input id="color" type="text" placeholder="Raza de la mascota">
+            <input id="color" type="text" name="color" placeholder="Raza de la mascota" [(ngModel)]="petData.Color">
         </div>
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
+    <button mat-button (click)="registerPet()" cdkFocusInitial>Aceptar</button>
 </mat-dialog-actions>

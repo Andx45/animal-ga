@@ -2,12 +2,12 @@
     <form action="#" method="POST" class="login-form">
         <h2 class="login-title">Inicio De Sesión</h2>
         <div class="form-group">
-            <label for="username">Correo Electrónico</label>
-            <input type="text" id="username" name="username">
+            <label for="username">DPI:</label>
+            <input type="text" id="username" name="username" [(ngModel)]="loginObj.Dpi" required>
         </div>
         <div class="form-group">
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" [(ngModel)]="loginObj.Password" required>
         </div>
         <button type="submit" (click)="login()">Login</button>
         <div class="register">
